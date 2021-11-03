@@ -1,0 +1,23 @@
+version: "3.5"
+services:
+  app:
+    build: .
+    links:
+      - mongo
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/opt/app
+      - /opt/app/node_modules
+  mongo:
+    image: mongo
+    ports: 
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - mongodata:/data/db
+    command: mongod --quiet --logpath /dev/null     
+volumes: 
+  mongodata:
