@@ -2,7 +2,8 @@ import { Request, Response } from "express";
 import User, { IUser } from "../models/index";
 class IndexControllers {
     async index(req: Request, res: Response) {
-        res.send("hola otra vez");
+        const users = await User.find({});
+        res.send(users);
     }
 
     async createUser(req: Request, res: Response) {
@@ -10,16 +11,19 @@ class IndexControllers {
         if (name.length === 0) {
             res.send("el nombre no puede estar vacio");
         }
-        //console.log(name, email, password);
         const newUser = new User(req.body);
         await newUser.save();
         res.send("usuario creado correctamente");
     }
     async editUser(req: Request, res: Response) {
-        res.send("creando usuario");
+        const { id } = req.params;
+        await User.findByIdAndUpdate(id, req.body);
+        res.send("Usuario actualizado");
     }
     async deleteUser(req: Request, res: Response) {
-        res.send("creando usuario");
+        const { id } = req.params;
+        await User.findByIdAndDelete(id);
+        res.send("Uusario Eliminado : 'v");
     }
 }
 export const indexControllers = new IndexControllers();

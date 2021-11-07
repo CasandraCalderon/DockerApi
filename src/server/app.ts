@@ -1,13 +1,15 @@
 import express, {Application} from "express";
 import morgan from "morgan";
 import {connect} from "./database";
-import routes from "../routes"
+import routes from "../routes";
+import cors from "cors";
 class App {
     readonly port: number;
     private app: Application;
     constructor() {
-        this.port = +process.env.PORT!;
+        this.port = +process.env.PORT! || 8000;
         this.app = express();
+        this.settings();
         this.middlewares();
         this.routes();
         const dbUser = process.env.DB_USER!;
@@ -18,10 +20,15 @@ class App {
         connect(dbUser, dbPass, dbHost, dbPort, dbName);
     }
 
+    private settings() {
+        this.app.set("port", process.env.PORT || 8000);
+        this.app.use(cors());
+    }
+
     private middlewares() {
         this.app.use(morgan("dev"));
-        this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: false }));
+        this.app.use(express.json());
     }
 
     private routes() {

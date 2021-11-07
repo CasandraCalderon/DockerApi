@@ -8,7 +8,7 @@ export const connect = async (
   dbName: string
 ) => {
     try {
-      await mongoose.connect(`mongodb://${dbUser}:${dbPassword}@${dbHost}:${dbPort}/${dbName}? authSource=admin`)
+      await mongoose.connect(`mongodb://${dbUser}:${dbPassword}@${dbHost}:${dbPort}/${dbName}?authSource=admin`)
       console.log("database conected");
     } catch (e) {
         console.log(e);
