@@ -49,6 +49,8 @@ router.post("/materia/create", materiaControllers.createMateria);
 router.put("/materia/edit/:id", materiaControllers.editMateria);
 router.delete("/materia/delete/:id", materiaControllers.deleteMateria); 
 
+
+
 export default router;
 
 

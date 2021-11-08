@@ -10,6 +10,7 @@ export interface IDocente {
     Cargo : string;
     Usuario : string;
     Contraseña : string;
+    Disponibilidad : string[];
 }
 const docenteSchema = new Schema({
     Nombre: {
@@ -50,6 +51,10 @@ const docenteSchema = new Schema({
     Contraseña: {
         type: String,
         required: true,
+    },
+    Disponibilidad: {
+        type: Array,
+        required: false,
     },
 });
 
