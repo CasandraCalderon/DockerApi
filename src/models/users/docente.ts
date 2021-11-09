@@ -44,11 +44,11 @@ const docenteSchema = new Schema({
         type: String,
         required: true,
     },
-    Usuario: {
+    username: {
         type: String,
         required: true,
     },
-    Contraseña: {
+    password: {
         type: String,
         required: true,
     },

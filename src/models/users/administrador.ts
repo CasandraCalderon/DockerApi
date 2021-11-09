@@ -8,8 +8,8 @@ export interface IAdministrador {
     Email: string;
     RU : string;
     Cargo : string;
-    Usuario : string;
-    Contraseña : string;
+    username : string;
+    password : string;
 }
 const administradorSchema = new Schema({
     Nombre: {
@@ -43,11 +43,11 @@ const administradorSchema = new Schema({
         type: String,
         required: true,
     },
-    Usuario: {
+    username: {
         type: String,
         required: true,
     },
-    Contraseña: {
+    password: {
         type: String,
         required: true,
     },
