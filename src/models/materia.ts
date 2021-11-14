@@ -7,6 +7,8 @@ export interface IMateria {
     TipoAula: string;
     Docente: string;
     CantHSemanas : number;
+    programados : string[];
+    select : boolean;
 }
 const materiaSchema = new Schema({
     Nombre: {
@@ -30,6 +32,14 @@ const materiaSchema = new Schema({
     CantHSemanas: {
         type: Number,
         required: true,
+    },
+    programados: {
+        type: Array,
+        required: false,
+    },
+    select: {
+        type: false,
+        required: false,
     },
 });
 

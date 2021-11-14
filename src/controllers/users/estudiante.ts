@@ -22,5 +22,16 @@ class EstudianteControllers {
         await Estudiante.findByIdAndDelete(id);
         res.send("Estudiante Eliminado : 'v");
     }
+    async login (req: Request, res: Response) {
+        const {username, password} = req.body;
+        const user = await Estudiante.findOne({username: username, password: password});
+        if(!user) {
+            res.send('Estudiante NO ENCONTRADO');
+        }
+        else {
+            res.send('Estudiante encontrado');
+        }
+            
+    }
 }
 export const estudianteControllers = new EstudianteControllers();

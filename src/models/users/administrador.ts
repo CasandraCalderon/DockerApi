@@ -1,15 +1,17 @@
-import { model, Schema } from "mongoose";
-
-export interface IAdministrador {
+import { model, Schema, Document } from "mongoose";
+import bcrypt from 'bcrypt';
+export interface IAdministrador extends Document {
     Nombre: string;
     Ap_Paterno: string;
     Ap_Materno: string;
-    CI: string;
-    Email: string;
-    RU : string;
-    Cargo : string;
+    CI?: string;
+    Email?: string;
+    RU? : string;
+    Cargo? : string;
     username : string;
     password : string;
+    encryptPassword?(password : string) : Promise<string>;
+    matchPassword?(password : string) : Promise<boolean>;
 }
 const administradorSchema = new Schema({
     Nombre: {
@@ -52,5 +54,16 @@ const administradorSchema = new Schema({
         required: true,
     },
 });
+administradorSchema.methods.encryptPassword = async (
+    password: string
+    ): Promise<string> => {
+        const salt = await bcrypt.genSalt(10);
+        return bcrypt.hash(password, salt);
+    }
+administradorSchema.methods.matchPassword = async function (
+    password: string
+    ): Promise<boolean> {
+        return await bcrypt.compare(password, this.password);
+    }
 
 export default model<IAdministrador>("Administrador", administradorSchema);

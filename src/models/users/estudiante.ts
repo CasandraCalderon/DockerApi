@@ -9,8 +9,8 @@ export interface IEstudiante {
     RU : string;
     Cargo : string;
     Semestre : string;
-    Usuario : string;
-    Contraseña : string;
+    username : string;
+    password : string;
 }
 const estudianteSchema = new Schema({
     Nombre: {
@@ -48,11 +48,11 @@ const estudianteSchema = new Schema({
         type: String,
         required: true,
     },
-    Usuario: {
+    username: {
         type: String,
         required: true,
     },
-    Contraseña: {
+    password: {
         type: String,
         required: true,
     },

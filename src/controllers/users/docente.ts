@@ -22,5 +22,16 @@ class DocenteControllers {
         await Docente.findByIdAndDelete(id);
         res.send("Administrador Eliminado : 'v");
     }
+    async login (req: Request, res: Response) {
+        const {username, password} = req.body;
+        const user = await Docente.findOne({username: username, password: password});
+        if(!user) {
+            res.send('Docente NO ENCONTRADO');
+        }
+        else {
+            res.send('Docente encontrado');
+        }
+            
+    }
 }
 export const docenteControllers = new DocenteControllers();
