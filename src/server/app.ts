@@ -3,6 +3,7 @@ import morgan from "morgan";
 import {connect} from "./database";
 import routes from "../routes";
 import cors from "cors";
+import path from 'path';
 class App {
     readonly port: number;
     private app: Application;
@@ -33,6 +34,10 @@ class App {
 
     private routes() {
         this.app.use("/api", routes);
+    }
+
+    private multer() {
+        this.app.use('/uploads', express.static(path.resolve('uploads')));
     }
 
     start() {

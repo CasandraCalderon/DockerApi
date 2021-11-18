@@ -20,16 +20,28 @@
     "@types/moment": "^2.13.0",
     "@types/mongoose": "^5.11.97",
     "@types/morgan": "^1.9.3",
+    "@types/multer": "^1.4.7",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "fs-extra": "^10.0.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
     "mongoose": "^6.0.12",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "multer": "^1.4.3",
+    "ts-node": "^10.4.0"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.12"
+    "@types/cors": "^2.8.12",
+    "@types/fs-extra": "^9.0.13",
+    "@types/node": "^16.11.7",
+    "@types/uuid": "^8.3.1",
+    "@types/uuidv4": "^5.0.0",
+    "node": "^17.1.0",
+    "nodemon": "^2.0.15",
+    "uuid": "^8.3.2",
+    "uuidv4": "^6.2.12"
   }
 }

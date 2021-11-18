@@ -4,7 +4,10 @@ import { JsonWebToken } from '../../middleware/JsonWebToken';
 class AdministradorControllers {
     async index(req: Request, res: Response) {
         const administrador = await Administrador.find({});
-        res.status(200).json({ message: 'all user', administrador});
+        //console.log(req.userId);
+        //const user = await Administrador.findById(req.userId);
+        //res.status(200).json({ message: 'all user', administrador});
+        res.send(administrador);
     }
 
     async createAdministrador(req: Request, res: Response) {
@@ -25,6 +28,7 @@ class AdministradorControllers {
         res.send("Administrador Eliminado : 'v");
     }
     async login (req: Request, res: Response) {
+        console.log(req.body);
         const {username, password} = req.body;
         const user = await Administrador.findOne({ username: username });
         if(user) {
@@ -32,9 +36,9 @@ class AdministradorControllers {
                 const token = JsonWebToken(user._id);
                 return res.status(200).json({ message: "LOGUEADO", user, token});
             }
-            return res.status(300).json({ message: "Contraseña incorrecta"});
+            return res.status(200).json({ message: "Contraseña incorrecta"});
         }
-        return res.status(300).json({message: "Usuario no encontrado"});
+        return res.status(200).json({message: "Usuario no encontrado"});
             
     }
 }

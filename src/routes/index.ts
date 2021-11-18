@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express"
 import {authToken} from '../middleware/authToken'
+import multer from '../libs/multer';
 import { aulaControllers } from "../controllers/aula/aula";
 import { indexControllers } from "../controllers/index";
 import { materiaControllers } from "../controllers/materia";
@@ -10,7 +11,7 @@ import { estudianteControllers } from "../controllers/users/estudiante";
 const router = Router();
 
 //Base de datos Administrador
-router.get("/admin", authToken, administradorControllers.index);
+router.get("/admin", administradorControllers.index);
 router.post("/admin/create", administradorControllers.createAdministrador);
 router.put("/admin/edit/:id", administradorControllers.editAdministrador);
 router.delete("/admin/delete/:id", administradorControllers.deleteAdministrador);
@@ -19,7 +20,7 @@ router.post("/admin/login", administradorControllers.login);
 //Base de datos Docentes
 
 router.get("/docente", docenteControllers.index);
-router.post("/docente/create", docenteControllers.createDocente);
+router.post("/docente/create", multer.single('image'), docenteControllers.createDocente);
 router.put("/docente/edit/:id", docenteControllers.editDocente);
 router.delete("/docente/delete/:id", docenteControllers.deleteDocente);
 router.post("/docente/login", docenteControllers.login);
