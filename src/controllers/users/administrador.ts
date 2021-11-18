@@ -32,9 +32,9 @@ class AdministradorControllers {
                 const token = JsonWebToken(user._id);
                 return res.status(200).json({ message: "LOGUEADO", user, token});
             }
-            return res.status(300).json({ message: "Contraseña incorrecta"});
+            return res.status(200).json({ message: "Contraseña incorrecta"});
         }
-        return res.status(300).json({message: "Usuario no encontrado"});
+        return res.status(200).json({message: "Usuario no encontrado"});
             
     }
 }

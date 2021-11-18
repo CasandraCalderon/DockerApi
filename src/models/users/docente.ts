@@ -1,6 +1,6 @@
-import { model, Schema } from "mongoose";
-
-export interface IDocente {
+import { model, Schema, Document } from "mongoose";
+import bcrypt from 'bcrypt';
+export interface IDocente extends Document {
     Nombre: string;
     Ap_Paterno: string;
     Ap_Materno: string;
@@ -8,9 +8,11 @@ export interface IDocente {
     Email: string;
     RU : string;
     Cargo : string;
-    Usuario : string;
-    Contraseña : string;
+    username : string;
+    password : string;
     Disponibilidad : string[];
+    encryptPassword?(password : string) : Promise<string>;
+    matchPassword?(password : string) : Promise<boolean>;
 }
 const docenteSchema = new Schema({
     Nombre: {
@@ -57,5 +59,17 @@ const docenteSchema = new Schema({
         required: false,
     },
 });
+docenteSchema.methods.encryptPassword = async (
+    password: string
+    ): Promise<string> => {
+        const salt = await bcrypt.genSalt(10);
+        return bcrypt.hash(password, salt);
+    }
+docenteSchema.methods.matchPassword = async function (
+    password: string
+    ): Promise<boolean> {
+        return await bcrypt.compare(password, this.password);
+    }
+
 
 export default model<IDocente>("Docente", docenteSchema);

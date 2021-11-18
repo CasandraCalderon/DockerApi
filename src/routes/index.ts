@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express"
-import {authToken} from '../middleware/authToken'
+//import {authToken} from '../middleware/authToken'
 import { aulaControllers } from "../controllers/aula/aula";
 import { indexControllers } from "../controllers/index";
 import { materiaControllers } from "../controllers/materia";
@@ -10,7 +10,7 @@ import { estudianteControllers } from "../controllers/users/estudiante";
 const router = Router();
 
 //Base de datos Administrador
-router.get("/admin", authToken, administradorControllers.index);
+router.get("/admin", administradorControllers.index);
 router.post("/admin/create", administradorControllers.createAdministrador);
 router.put("/admin/edit/:id", administradorControllers.editAdministrador);
 router.delete("/admin/delete/:id", administradorControllers.deleteAdministrador);
