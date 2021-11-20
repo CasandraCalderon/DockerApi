@@ -4,7 +4,7 @@ import { JsonWebToken } from '../../middleware/JsonWebToken';
 class AdministradorControllers {
     async index(req: Request, res: Response) {
         const administrador = await Administrador.find({});
-        res.status(200).json({ message: 'all user', administrador});
+        res.send(administrador);
     }
 
     async createAdministrador(req: Request, res: Response) {

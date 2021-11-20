@@ -1,6 +1,7 @@
 import { Router, Request, Response } from "express"
 //import {authToken} from '../middleware/authToken'
 import { aulaControllers } from "../controllers/aula/aula";
+import { primeroControllers } from "../controllers/horarios/primero";
 import { indexControllers } from "../controllers/index";
 import { materiaControllers } from "../controllers/materia";
 import { administradorControllers } from "../controllers/users/administrador";
@@ -53,6 +54,12 @@ router.post("/materia/create", materiaControllers.createMateria);
 router.put("/materia/edit/:id", materiaControllers.editMateria);
 router.delete("/materia/delete/:id", materiaControllers.deleteMateria); 
 
+//Controlers Primer Semestre
+
+router.get("/primero", primeroControllers.index);
+router.post("/primero/create", primeroControllers.createPrimero);
+router.put("/primero/edit/:id", primeroControllers.editPrimero);
+router.delete("/primero/delete/:id", primeroControllers.deletePrimero);
 
 
 export default router;
