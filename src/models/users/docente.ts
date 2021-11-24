@@ -11,6 +11,7 @@ export interface IDocente extends Document {
     username : string;
     password : string;
     Disponibilidad : string[];
+    DisOcupada : string[];
     encryptPassword?(password : string) : Promise<string>;
     matchPassword?(password : string) : Promise<boolean>;
 }
@@ -58,6 +59,10 @@ const docenteSchema = new Schema({
         type: Array,
         required: false,
     },
+    DisOcupada : {
+        type: Array,
+        required: false,
+    }
 });
 docenteSchema.methods.encryptPassword = async (
     password: string

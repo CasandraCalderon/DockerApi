@@ -4,8 +4,6 @@ export interface IMateria {
     Nombre: string;
     Sigla: string;
     Semestre: string;
-    TipoAula: string;
-    Docente: string;
     CantHSemanas : number;
 }
 const materiaSchema = new Schema({
@@ -21,14 +19,6 @@ const materiaSchema = new Schema({
     Semestre: {
         type: String,
         required: true,
-    },
-    TipoAula: {
-        type: String,
-        required: true,
-    },
-    Docente: {
-        type: String,
-        required: false,
     },
     CantHSemanas: {
         type: Number,
