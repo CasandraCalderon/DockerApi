@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import Estudiante, { IEstudiante } from "../../models/users/estudiante";
 import { JsonWebToken } from '../../middleware/JsonWebToken';
+
 class EstudianteControllers {
     async index(req: Request, res: Response) {
         const estudiante = await Estudiante.find({});

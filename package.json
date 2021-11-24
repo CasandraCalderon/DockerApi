@@ -14,7 +14,6 @@
   "author": "casandra",
   "license": "ISC",
   "dependencies": {
-    "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.13",
     "@types/jsonwebtoken": "^8.5.5",
     "@types/moment": "^2.13.0",
@@ -22,6 +21,7 @@
     "@types/morgan": "^1.9.3",
     "@types/multer": "^1.4.7",
     "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
@@ -42,6 +42,8 @@
     "node": "^17.1.0",
     "nodemon": "^2.0.15",
     "uuid": "^8.3.2",
-    "uuidv4": "^6.2.12"
+    "uuidv4": "^6.2.12",
+    "@types/bcrypt": "^5.0.0",
+    "@types/bcryptjs": "^2.4.2"
   }
 }

@@ -8,13 +8,13 @@ export interface IDocente extends Document {
     Email: string;
     RU : string;
     Cargo : string;
-    Usuario : string;
-    Contraseña : string;
-    Disponibilidad : string[];
+    username : string;
     password : string;
+    Disponibilidad : string[];
+    DisOcupada : string[];
+    image : string;
     encryptPassword?(password : string) : Promise<string>;
     matchPassword?(password : string) : Promise<boolean>;
-    image : string;
 }
 const docenteSchema = new Schema({
     Nombre: {
@@ -62,6 +62,9 @@ const docenteSchema = new Schema({
     },
     image: {
         type: String,
+    },
+    DisOcupada : {
+        type: Array,
         required: false,
     }
 });

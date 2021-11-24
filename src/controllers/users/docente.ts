@@ -30,6 +30,7 @@ class DocenteControllers {
         if (docente) {
             await fs.unlink(path.resolve(docente.image))
         }
+       await Docente.findByIdAndDelete(id);
         res.send("Docente Eliminado : 'v");
     }
     async login (req: Request, res: Response) {
@@ -48,3 +49,4 @@ class DocenteControllers {
     }
 }
 export const docenteControllers = new DocenteControllers();
+

@@ -1,6 +1,6 @@
 import { model, Schema, Document } from "mongoose";
 import bcrypt from 'bcrypt';
-export interface IEstudiante extends Document{
+export interface IEstudiante extends Document {
     Nombre: string;
     Ap_Paterno: string;
     Ap_Materno: string;
