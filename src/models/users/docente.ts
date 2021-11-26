@@ -60,11 +60,12 @@ const docenteSchema = new Schema({
         type: Array,
         required: false,
     },
-    image: {
-        type: String,
-    },
     DisOcupada : {
         type: Array,
+        required: false,
+    },
+    image: {
+        type: String,
         required: false,
     }
 });

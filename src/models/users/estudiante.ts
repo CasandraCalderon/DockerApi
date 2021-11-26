@@ -7,6 +7,7 @@ export interface IEstudiante extends Document {
     CI: string;
     Email: string;
     RU : string;
+    Telefono: number;
     Cargo : string;
     Semestre : string;
     username : string;
@@ -42,6 +43,11 @@ const estudianteSchema = new Schema({
         required: true,
         unique: true,
     },
+    Telefono: {
+        type: Number,
+        required: true,
+        unique: true,
+    },
     Cargo: {
         type: String,
         required: true,
@@ -53,10 +59,12 @@ const estudianteSchema = new Schema({
     username: {
         type: String,
         required: true,
+        unique: true,
     },
     password: {
         type: String,
         required: true,
+        unique: true,
     },
 });
 estudianteSchema.methods.encryptPassword = async (

@@ -1,12 +1,13 @@
 import { model, Schema, Document } from "mongoose";
 import bcrypt from 'bcrypt';
 export interface IAdministrador extends Document {
+    RU? : string;
     Nombre: string;
     Ap_Paterno: string;
     Ap_Materno: string;
     CI?: string;
     Email?: string;
-    RU? : string;
+    Telefono: number;
     Cargo? : string;
     username : string;
     password : string;
@@ -14,6 +15,11 @@ export interface IAdministrador extends Document {
     matchPassword?(password : string) : Promise<boolean>;
 }
 const administradorSchema = new Schema({
+    RU: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     Nombre: {
         type: String,
         required: true,
@@ -36,7 +42,7 @@ const administradorSchema = new Schema({
         type: String,
         required: true,
     },
-    RU: {
+    Telefono: {
         type: String,
         required: true,
         unique: true,
@@ -48,10 +54,12 @@ const administradorSchema = new Schema({
     username: {
         type: String,
         required: true,
+        unique: true
     },
     password: {
         type: String,
         required: true,
+        unique: true
     },
 });
 administradorSchema.methods.encryptPassword = async (
