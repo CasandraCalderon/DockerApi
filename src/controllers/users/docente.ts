@@ -26,10 +26,6 @@ class DocenteControllers {
     }
     async deleteDocente(req: Request, res: Response) {
         const { id } = req.params;
-        const docente = await Docente.findByIdAndDelete(id);
-        if (docente) {
-            await fs.unlink(path.resolve(docente.image))
-        }
        await Docente.findByIdAndDelete(id);
         res.send("Docente Eliminado : 'v");
     }

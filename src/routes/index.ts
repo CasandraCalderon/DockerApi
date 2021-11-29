@@ -13,6 +13,7 @@ import { TipoAulaControllers } from "../controllers/tipoAulas/tipoAulas";
 import { administradorControllers } from "../controllers/users/administrador";
 import { docenteControllers } from "../controllers/users/docente";
 import { estudianteControllers } from "../controllers/users/estudiante";
+import { avatarControllers } from "../controllers/avatar/Avatar";
 
 const router = Router();
 
@@ -96,5 +97,10 @@ router.delete("/segundoS/delete/:id", segundoSControllers.deleteClass);
 
 export default router;
 
+//Controllers Avatar
+router.get("/avatar", avatarControllers.index);
+router.post("/avatar/create", multer.single('image'), avatarControllers.createAvatar);
+router.put("/avatar/edit/:id", avatarControllers.editAvatar);
+router.delete("/avatar/delete/:id", avatarControllers.deleteAvatar);
 
 
