@@ -10,7 +10,6 @@ class PrimeroSControllers {
     async createClass(req: Request, res: Response) {
         const { Dia, Turno } = req.body;
         if(await primeroS.findOne({Turno: Turno, Dia: Dia})){
-            console.log('este holajadsjas')
             return res.status(200).json({message: "Este horario ya esta ocupado"});
         }
         else {

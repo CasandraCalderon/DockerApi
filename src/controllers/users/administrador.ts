@@ -11,7 +11,10 @@ class AdministradorControllers {
     }
 
     async createAdministrador(req: Request, res: Response) {
-        const {password} = req.body;
+        const {password, RU} = req.body;
+        if(await Administrador.findOne({RU: RU})){
+            return res.status(200).json({message: "RU YA EXISTENTE"});
+        }
         const newAdministrador: IAdministrador = new Administrador(req.body);
         newAdministrador.password = await newAdministrador.encryptPassword!(password);
         await newAdministrador.save();

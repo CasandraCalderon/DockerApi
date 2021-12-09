@@ -18,16 +18,16 @@ import { avatarControllers } from "../controllers/avatar/Avatar";
 const router = Router();
 
 //Base de datos Administrador
-router.get("/admin", administradorControllers.index);
-router.post("/admin/create", administradorControllers.createAdministrador);
-router.put("/admin/edit/:id", administradorControllers.editAdministrador);
-router.delete("/admin/delete/:id", administradorControllers.deleteAdministrador);
-router.post("/admin/login", administradorControllers.login);
+router.get("/administrador", administradorControllers.index);
+router.post("/administrador/create", administradorControllers.createAdministrador);
+router.put("/administrador/edit/:id", administradorControllers.editAdministrador);
+router.delete("/administrador/delete/:id", administradorControllers.deleteAdministrador);
+router.post("/administrador/login", administradorControllers.login);
 
 //Base de datos Docentes
 
 router.get("/docente", docenteControllers.index);
-router.post("/docente/create", multer.single('image'), docenteControllers.createDocente);
+router.post("/docente/create", docenteControllers.createDocente);
 router.put("/docente/edit/:id", docenteControllers.editDocente);
 router.delete("/docente/delete/:id", docenteControllers.deleteDocente);
 router.post("/docente/login", docenteControllers.login);

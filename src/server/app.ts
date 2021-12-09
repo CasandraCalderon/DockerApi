@@ -13,6 +13,8 @@ class App {
         this.settings();
         this.middlewares();
         this.routes();
+        this.multer();
+        
         const dbUser = process.env.DB_USER!;
         const dbPass = process.env.DB_PASS!;
         const dbHost = process.env.DB_HOST!;
@@ -36,9 +38,12 @@ class App {
         this.app.use("/api", routes);
     }
 
-    private multer() {
+    public multer() {
         this.app.use('/uploads', express.static(path.resolve('uploads')));
     }
+
+
+    
 
     start() {
         this.app.listen(this.port, () => {

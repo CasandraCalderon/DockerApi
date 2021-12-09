@@ -24,7 +24,10 @@ class AvatarControllers {
     }
     async deleteAvatar(req: Request, res: Response) {
         const { id } = req.params;
-        await Avatar.findByIdAndDelete(id);
+        const avatarPhoto = await Avatar.findByIdAndDelete(id);
+        if(avatarPhoto) {
+            await fs.unlink(path.resolve(avatarPhoto.image));
+        }
         res.send("Avatar eliminado");
     }
 }
