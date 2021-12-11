@@ -1,13 +1,13 @@
-import { model, Schema, Document } from "mongoose";
+import { model, Schema } from "mongoose";
 
-export interface IPrimeroS extends Document{
+export interface ITerceroS {
     Dia: string;
     Materia: string;
     Docente: string;
     Aula : string;
     Turno : string;
 }
-const primeroSSchema = new Schema({
+const terceroSSchema = new Schema({
     Dia: {
         type: String,
         required: true,
@@ -30,4 +30,4 @@ const primeroSSchema = new Schema({
     }
 });
 
-export default model<IPrimeroS>("PrimeroS", primeroSSchema);
+export default model<ITerceroS>("TerceroS", terceroSSchema);

@@ -31,7 +31,6 @@ class AdministradorControllers {
         res.send("Administrador Eliminado : 'v");
     }
     async login (req: Request, res: Response) {
-        console.log(req.body);
         const {username, password} = req.body;
         const user = await Administrador.findOne({ username: username });
         if(user) {
