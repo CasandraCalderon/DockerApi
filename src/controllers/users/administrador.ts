@@ -11,9 +11,33 @@ class AdministradorControllers {
     }
 
     async createAdministrador(req: Request, res: Response) {
-        const {password, RU} = req.body;
+        const {password, RU, CI, Email, Telefono, username} = req.body;
         if(await Administrador.findOne({RU: RU})){
-            return res.status(200).json({message: "RU YA EXISTENTE"});
+            return res.status(200).json({error: "RU ya existente"});
+        }
+        if(!/^[[0-9]{4}$/.test(RU)){
+            return res.status(200).json({error: "RU no valido"});
+        }
+        if(await Administrador.findOne({CI: CI})){
+            return res.status(200).json({error: "CI ya existente"});
+        }
+        if(!/^[[0-9]{7,8}$/.test(CI)){
+            return res.status(200).json({error: "CI no valido"});
+        }
+        if(!/^[[0-9]{8}$/.test(Telefono)){
+            return res.status(200).json({error: "Numero de telefono no valido"});
+        }
+        if(await Administrador.findOne({Telefono: Telefono})){
+            return res.status(200).json({error: "Ya existe un usuario con este numero de telefono"});
+        }
+        if(!/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i.test(Email)){
+            return res.status(200).json({error: "Email no valido"});
+        }
+        if(await Administrador.findOne({Email: Email})){
+            return res.status(200).json({error: "Correo Electronico ya existente"});
+        }
+        if(await Administrador.findOne({username: username})){
+            return res.status(200).json({error: "Nombre de usuario no disponible"});
         }
         const newAdministrador: IAdministrador = new Administrador(req.body);
         newAdministrador.password = await newAdministrador.encryptPassword!(password);
