@@ -7,7 +7,7 @@ export interface IAdministrador extends Document {
     Ap_Materno: string;
     CI?: string;
     Email?: string;
-    Telefono: number;
+    Telefono: string;
     Cargo? : string;
     username : string;
     password : string;

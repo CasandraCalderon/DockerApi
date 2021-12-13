@@ -7,7 +7,7 @@ export interface IEstudiante extends Document {
     CI: string;
     Email: string;
     RU : string;
-    Telefono: number;
+    Telefono: string;
     Cargo : string;
     Semestre : string;
     username : string;
@@ -44,7 +44,7 @@ const estudianteSchema = new Schema({
         unique: true,
     },
     Telefono: {
-        type: Number,
+        type: String,
         required: true,
         unique: true,
     },

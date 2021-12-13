@@ -7,7 +7,7 @@ export interface IDocente extends Document {
     CI: string;
     Email: string;
     RU : string;
-    Telefono : number;
+    Telefono : string;
     Cargo : string;
     username : string;
     password : string;
@@ -45,7 +45,7 @@ const docenteSchema = new Schema({
         unique: true,
     },
     Telefono: {
-        type: Number,
+        type: String,
         required: true,
         unique: true,
     },
