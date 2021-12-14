@@ -15,6 +15,8 @@ import { estudianteControllers } from "../controllers/users/estudiante";
 import { avatarControllers } from "../controllers/avatar/Avatar";
 import { terceroSControllers } from "../controllers/horarios/TerceroS";
 import { cuartoSControllers } from "../controllers/horarios/CuartoS";
+import { quintoSControllers } from "../controllers/horarios/QuintoS";
+import { sextoSControllers } from "../controllers/horarios/SextoS";
 
 const router = Router();
 
@@ -103,6 +105,20 @@ router.get("/cuartoS", cuartoSControllers.index);
 router.post("/cuartoS/create", cuartoSControllers.createClass);
 router.put("/cuartoS/edit/:id", cuartoSControllers.editClass);
 router.delete("/cuartoS/delete/:id", cuartoSControllers.deleteClass);
+
+//Controllers Horarios/ Quinto Semestre
+
+router.get("/quintoS", quintoSControllers.index);
+router.post("/quintoS/create", quintoSControllers.createClass);
+router.put("/quintoS/edit/:id", quintoSControllers.editClass);
+router.delete("/quintoS/delete/:id", quintoSControllers.deleteClass);
+
+//Controllers Horarios/ Sexto Semestre
+
+router.get("/sextoS", sextoSControllers.index);
+router.post("/sextoS/create", sextoSControllers.createClass);
+router.put("/sextoS/edit/:id", sextoSControllers.editClass);
+router.delete("/sextoS/delete/:id", sextoSControllers.deleteClass);
 
 //Controllers Avatar
 router.get("/avatar", avatarControllers.index);
