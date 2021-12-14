@@ -14,6 +14,7 @@ import { docenteControllers } from "../controllers/users/docente";
 import { estudianteControllers } from "../controllers/users/estudiante";
 import { avatarControllers } from "../controllers/avatar/Avatar";
 import { terceroSControllers } from "../controllers/horarios/TerceroS";
+import { cuartoSControllers } from "../controllers/horarios/CuartoS";
 
 const router = Router();
 
@@ -95,6 +96,13 @@ router.get("/terceroS", terceroSControllers.index);
 router.post("/terceroS/create", terceroSControllers.createClass);
 router.put("/terceroS/edit/:id", terceroSControllers.editClass);
 router.delete("/terceroS/delete/:id", terceroSControllers.deleteClass);
+
+//Controllers Horarios/ Cuarto Semestre
+
+router.get("/cuartoS", cuartoSControllers.index);
+router.post("/cuartoS/create", cuartoSControllers.createClass);
+router.put("/cuartoS/edit/:id", cuartoSControllers.editClass);
+router.delete("/cuartoS/delete/:id", cuartoSControllers.deleteClass);
 
 //Controllers Avatar
 router.get("/avatar", avatarControllers.index);

@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import primeroS, { IPrimeroS } from "../../models/horarios/PrimeroS";
+import cuartoS, { ICuartoS } from "../../models/horarios/CuartoS";
 
-class PrimeroSControllers {
+class CuartoSControllers {
     async index(req: Request, res: Response) {
-        const PrimeroS = await primeroS.find({});
-        res.send(PrimeroS);
+        const CuartoS = await cuartoS.find({});
+        res.send(CuartoS);
     }
 
     async createClass(req: Request, res: Response) {
@@ -21,11 +21,11 @@ class PrimeroSControllers {
             Turno === "Seleccionar Turno..."){
                 return res.status(200).json({ error: "Llene los datos vacios" });
             }
-        if(await primeroS.findOne({Turno: Turno, Dia: Dia})){
+        if(await cuartoS.findOne({Turno: Turno, Dia: Dia})){
             return res.status(200).json({message: "Este horario ya esta ocupado"});
         }
         else {
-            const newclass = new primeroS(req.body);
+            const newclass = new cuartoS(req.body);
             await newclass.save();
             res.send("Clase creada");
         }        
@@ -33,13 +33,13 @@ class PrimeroSControllers {
     }
     async editClass(req: Request, res: Response) {
         const { id } = req.params;
-        await primeroS.findByIdAndUpdate(id, req.body);
+        await cuartoS.findByIdAndUpdate(id, req.body);
         res.send("Clase actualizada");
     }
     async deleteClass(req: Request, res: Response) {
         const { id } = req.params;
-        await primeroS.findByIdAndDelete(id);
+        await cuartoS.findByIdAndDelete(id);
         res.send("Clase Eliminada");
     }
 }
-export const primeroSControllers = new PrimeroSControllers();
+export const cuartoSControllers = new CuartoSControllers();
