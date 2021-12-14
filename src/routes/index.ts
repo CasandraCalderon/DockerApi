@@ -17,6 +17,8 @@ import { terceroSControllers } from "../controllers/horarios/TerceroS";
 import { cuartoSControllers } from "../controllers/horarios/CuartoS";
 import { quintoSControllers } from "../controllers/horarios/QuintoS";
 import { sextoSControllers } from "../controllers/horarios/SextoS";
+import { septimoSControllers } from "../controllers/horarios/SeptimoS";
+import { octavoSControllers } from "../controllers/horarios/Octavo";
 
 const router = Router();
 
@@ -119,6 +121,20 @@ router.get("/sextoS", sextoSControllers.index);
 router.post("/sextoS/create", sextoSControllers.createClass);
 router.put("/sextoS/edit/:id", sextoSControllers.editClass);
 router.delete("/sextoS/delete/:id", sextoSControllers.deleteClass);
+
+//Controllers Horarios/ Septimo Semestre
+
+router.get("/septimoS", septimoSControllers.index);
+router.post("/septimoS/create", septimoSControllers.createClass);
+router.put("/septimoS/edit/:id", septimoSControllers.editClass);
+router.delete("/septimoS/delete/:id", septimoSControllers.deleteClass);
+
+//Controllers Horarios/ Octavo Semestre
+
+router.get("/octavoS", octavoSControllers.index);
+router.post("/octavoS/create", octavoSControllers.createClass);
+router.put("/octavoS/edit/:id", octavoSControllers.editClass);
+router.delete("/octavoS/delete/:id", octavoSControllers.deleteClass);
 
 //Controllers Avatar
 router.get("/avatar", avatarControllers.index);
